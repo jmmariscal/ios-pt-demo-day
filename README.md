@@ -16,7 +16,7 @@
 
 ## Links
 
-* Github Code: `<insert Github repository link here>`
+* Github Code: https://github.com/iOSPT5-BW1/Mood-Tracker
 * Github Proposal: `<insert Proposal Pull Request here>`
 * Trello/Github Project Kanban: `<insert trello board here>`
 * Test Flight Signup (Recommended): `<insert beta signup link here>`
