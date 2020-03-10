@@ -30,27 +30,58 @@
 
 1. What was your favorite feature to implement? Why?
 
-    `<Your answer here>`
+    the Graph was one of my favorite features implemented because it's a cool visual to have and to see it get updated is nice to have in a app.
 
 2. What was your #1 obstacle or bug that you fixed? How did you fix it?
 
-    `<Your answer here>`
+    A Theme Helper, tried it first using Protocols and Delegates. Since it was multiple VC's that needed to get updated I researched and learned that NSNotification and Observers could be a better solution. But that also brought me issues because I couldn't figure out how to have Multiple Observers listening to the same '.post' . So my soulution was UserDefaults, and having a function in each view to check which UserDefault was chosen and update the background color accordingly.
   
 3. Share a chunk of code (or file) you're proud of and explain why.
 
-    `<Your answer here>`
+   class ThemeSelectionViewController: UIViewController {
+    
+    var themeHelper: ThemeHelper?
+
+    @IBOutlet weak var darkThemeBtn: UIButton!
+    @IBOutlet weak var lightThemeBtn: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        darkThemeBtn.layer.cornerRadius = 5.0
+        lightThemeBtn.layer.cornerRadius = 5.0
+
+    }
+    
+    @IBAction func darkThemeBtnTapped(_ sender: Any) {
+        themeHelper?.setThemePreferenceToDark()
+        let name = Notification.Name(rawValue: themeHelper?.themePreference ?? .darkNotificationKey)
+        NotificationCenter.default.post(name: name, object: nil)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func whiteThemeBtnTapped(_ sender: Any) {
+        themeHelper?.setThemePreferenceToWhite()
+        let name = Notification.Name(rawValue: themeHelper?.themePreference ?? .lightNotificationKey)
+        NotificationCenter.default.post(name: name, object: nil)
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+Seems very simple but this code took me a lot of work to figure out to work properly, and to achieve it made me proud
   
 4. What is your elevator pitch? (30 second description your Grandma or a 5-year old would understand)
 
-    `<Your answer here>`
+    What mood are you feeling right now, you can pull out your phone and open the app and simply tap on the mood you're feeling. Then add a comment as to why you feel this way or what made you feel this way. We will then show you a nice motivational quote to give you a little motivation or something to reflect on. Then you will see a list of all the moods you have chosen in the past.
   
 5. What is your #1 feature?
 
-    `<Your answer here>`
+    I believe the best feature is hard to pick because we have great ones, but I will have to pick the Graph that also gets updated as you're picking a mood.
   
 6. What are you future goals?
 
-    `<Your answer here>`
+    Polish up the UI, add sign in option to track your moods and comments connected to the mood.
 
 ## Required Slides (Add your Keynote to your PR)
 
